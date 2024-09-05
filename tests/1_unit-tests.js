@@ -5,7 +5,10 @@ suite('Unit Tests', function () {
   suite('Basic Assertions', function () {
     // #1
     test('#isNull, #isNotNull', function () {
-      assert.isNull(null, 'This is an optional error description - e.g. null is null');
+      assert.isNull(
+        null,
+        'this is an optional error description - e.g. null is null'
+      );
       assert.isNotNull(1, '1 is not null');
     });
     // #2
@@ -33,17 +36,17 @@ suite('Unit Tests', function () {
   suite('Equality', function () {
     // #5
     test('#equal, #notEqual', function () {
-      assert.fail(12, '12', 'Numbers are coerced into strings with ==');
-      assert.fail({ value: 1 }, { value: 1 }, '== compares object references');
-      assert.fail(6 * '2', '12');
-      assert.fail(6 + '2', '12');
+      assert.notEqual(12, '12', 'Numbers are coerced into strings with ==');
+      assert.equal({ value: 1 }, { value: 1 }, '== compares object references');
+      assert.notEqual(6 * '2', '12');
+      assert.notEqual(6 + '2', '12');
     });
     // #6
     test('#strictEqual, #notStrictEqual', function () {
-      assert.fail(6, '6');
-      assert.fail(6, 3 * 2);
-      assert.fail(6 * '2', 12);
-      assert.fail([1, 'a', {}], [1, 'a', {}]);
+      assert.notStrictEqual(6, '6');
+      assert.strictEqual(6, 3 * 2);
+      assert.notStrictEqual(6 * '2', 12);
+      assert.equal([1, 'a', {}], [1, 'a', {}]);
     });
     // #7
     test('#deepEqual, #notDeepEqual', function () {
